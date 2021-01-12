@@ -2,6 +2,10 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import csv as csv
 
+import sqlite3
+conn = sqlite3.connect('speedlog.db')
+c = conn.cursor()
+
 times = []
 download = []
 upload = []
@@ -16,11 +20,11 @@ with open('test.csv', 'r') as csvfile:
 
 print(times, "\n", download, "\n", upload)
 
-plt.figure()
-plt.plot(times, download, label='download', color='r')
-plt.plot(times, upload, label='upload', color='b')
-plt.xlabel('time')
-plt.ylabel('speed in Mb/s')
-plt.title("internet speed")
-plt.legend()
-plt.savefig('test_graph.jpg', bbox_inches='tight')
+# plt.figure()
+# plt.plot(times, download, label='download', color='r')
+# plt.plot(times, upload, label='upload', color='b')
+# plt.xlabel('time')
+# plt.ylabel('speed in Mb/s')
+# plt.title("internet speed")
+# plt.legend()
+# plt.savefig('test_graph.jpg', bbox_inches='tight')
