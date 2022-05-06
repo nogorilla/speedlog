@@ -1,15 +1,17 @@
+#!/usr/bin/python3
+
 import speedtest
 import datetime
 import sqlite3
 import os
-import click
+import time
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
+# TODO make location configurable
 conn = sqlite3.connect(os.path.join(__location__, "../data/speedlog.db"))
 c = conn.cursor()
 
-@click.command()
 def record():
     """ Record upload and download speed to sqlite """
     downspeed = 0.0
@@ -32,4 +34,6 @@ def record():
         pass
 
 if __name__ == "__main__":
-    record()
+    while True:
+        record()
+        time.sleep(120) # sleep for 2 minutes TODO make this configurable

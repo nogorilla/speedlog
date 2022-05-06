@@ -1,0 +1,12 @@
+[Unit]
+Description=Speedlog Service
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/speedlog
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
